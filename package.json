@@ -1,0 +1,20 @@
+{
+  "name": "nodejs_gmp",
+  "version": "1.0.0",
+  "description": "NodeJS GMP project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Imaginary05/NodeGMP.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Imaginary05/NodeGMP/issues"
+  },
+  "homepage": "https://github.com/Imaginary05/NodeGMP#readme"
+}
