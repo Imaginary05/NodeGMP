@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/Imaginary05/NodeGMP/issues"
   },
-  "homepage": "https://github.com/Imaginary05/NodeGMP#readme"
+  "homepage": "https://github.com/Imaginary05/NodeGMP#readme",
+  "dependencies": {
+    "axios": "^1.5.1",
+    "csv-parser": "^3.0.0",
+    "fs": "^0.0.1-security"
+  }
 }
