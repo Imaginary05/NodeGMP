@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
+    "swagger": "ts-node task_6/app.ts",
     "test": "jest",
     "test:coverage": "jest --coverage"
   },
@@ -19,14 +20,20 @@
   },
   "homepage": "https://github.com/Imaginary05/NodeGMP#readme",
   "dependencies": {
+    "@types/joi": "^17.2.3",
+    "@types/swagger-ui-express": "^4.1.6",
     "axios": "^1.5.1",
     "csv-parser": "^3.0.0",
     "express": "^4.18.2",
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "joi": "^17.11.0",
+    "swagger-ui-express": "^5.0.0",
+    "yaml": "^2.3.4"
   },
   "devDependencies": {
+    "@types/express": "^4.17.21",
     "@types/jest": "^29.5.5",
-    "@types/node": "^20.8.3",
+    "@types/node": "^20.9.0",
     "istanbul-lib-coverage": "^3.2.0",
     "istanbul-lib-instrument": "^6.0.1",
     "jest": "^29.7.0",

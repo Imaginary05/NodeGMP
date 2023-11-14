@@ -1,0 +1,104 @@
+swagger: '2.0'
+info:
+  version: '1.0.0'
+  title: 'Online Shop API'
+paths:
+  /api/users:
+    get:
+      summary: Get a list of users
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+        '404':
+          description: Users not found
+    post:
+      summary: Create a new user
+      parameters:
+        - in: body
+          name: user
+          description: The user to create
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '201':
+          description: User created successfully
+          schema:
+            $ref: '#/definitions/User'
+        '400':
+          description: Bad request
+
+  /api/users/{userId}:
+    get:
+      summary: Get a user by ID
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/User'
+        '404':
+          description: User not found
+
+
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      # ... other user properties
+
+  Product:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      price:
+        type: number
+      # ... other product properties
+
+  Cart:
+    type: object
+    properties:
+      userId:
+        type: string
+      products:
+        type: array
+        items:
+          type: object
+          properties:
+            productId:
+              type: string
+            quantity:
+              type: integer
+      # ... other cart properties
+
+  Order:
+    type: object
+    properties:
+      userId:
+        type: string
+      products:
+        type: array
+        items:
+          type: object
+          properties:
+            productId:
+              type: string
+            quantity:
+              type: integer
+            price:
+              type: number
+      # ... other order properties
