@@ -34,8 +34,8 @@ export class UserController {
     // Function to create a new user
     createUserHandler = (req: Request, res: Response) => {
         try {
-            const { name, email /* other properties */ } = req.body;
-            const newUser = this.userService.createUser({ name, email /* other properties */ });
+            const { name, email, isDeleted /* other properties */ } = req.body;
+            const newUser = this.userService.createUser({ name, email, isDeleted /* other properties */ });
             return res.status(201).json(newUser);
         } catch (error) {
             console.error(error);
@@ -63,14 +63,20 @@ export class UserController {
     };
 
     // Function to delete a user
-    deleteUserHandler = (req: Request, res: Response) => {
+    deleteUserHandler = async (req: Request, res: Response) => {
         const userId = req.params.userId;
-        const deleted = this.userService.deleteUser(userId);
 
-        if (deleted) {
-            return res.status(204).send();
-        } else {
-            return res.status(404).json({ message: 'User not found' });
+        try {
+            const updatedUser = await this.userService.deleteUser(userId);
+
+            if (updatedUser) {
+                return res.status(204).send();
+            } else {
+                return res.status(404).json({ message: 'User not found' });
+            }
+        } catch (error: any) {
+            console.error('Error soft-deleting user:', error.message);
+            return res.status(500).json({ message: 'Internal Server Error' });
         }
     };
 }
